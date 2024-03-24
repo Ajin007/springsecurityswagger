@@ -11,15 +11,19 @@ import com.max.quizspring.dto.request.LoginRequest;
 import com.max.quizspring.dto.request.RegisterRequest;
 import com.max.quizspring.service.AuthService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@Tag(name="Authentication", description = "API for user authentication.")
 public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
+    @Operation(summary = "register new user",description = "Allows user to register the users")
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest) {
         return new ResponseEntity<>(authService.register(registerRequest), HttpStatus.OK);
     }

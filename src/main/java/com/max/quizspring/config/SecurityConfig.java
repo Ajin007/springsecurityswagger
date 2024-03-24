@@ -1,5 +1,7 @@
 package com.max.quizspring.config;
 
+import static org.springframework.http.HttpMethod.*;
+
 import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
@@ -16,16 +18,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import static org.springframework.http.HttpMethod.DELETE;
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.HEAD;
-import static org.springframework.http.HttpMethod.OPTIONS;
-import static org.springframework.http.HttpMethod.PATCH;
-import static org.springframework.http.HttpMethod.POST;
-import static org.springframework.http.HttpMethod.PUT;
 
 import lombok.RequiredArgsConstructor;
-
+/*
+ * Enough to add v3 doc, swagger-ui, swagger-ui.html for getting the values
+ */
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -38,7 +35,15 @@ public class SecurityConfig {
         private static final String[] PublicEndPoints = {
                         "/api/auth/**",
                         "/api/web/**",
-                        "/api/sample/**"
+                        "/api/sample/**",
+                        "/v3/api-docs/**",
+                        "/swagger-resources",
+                        "/swagger-resources/**",
+                        "configuration/ui",
+                        "/configuration/security",
+                        "/v2/api-docs",
+                        "/swagger-ui/**",
+                        "/swagger-ui.html/"
         };
 
         @Bean
